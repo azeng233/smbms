@@ -16,7 +16,10 @@ public class BaseDao {
     static {
         Properties properties = new Properties();
         //通过类加载器读取对应的资源
-        InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("database.properties");
+        //云服务器
+        // InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("database.properties");
+        //本地服务器
+        InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("local.properties");
 
         try {
             properties.load(is);
@@ -33,8 +36,10 @@ public class BaseDao {
     public static Connection getConnection() {
         Connection connection = null;
         try {
+            System.out.println("数据库初始化中...");
             Class.forName(driver);
             connection = DriverManager.getConnection(url, username, password);
+            System.out.println("数据库连接成功!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,8 +66,7 @@ public class BaseDao {
             //占位符从1开始，但是数组从0开始 可能有很多问号 问号从1开始
             preparedStatement.setObject(i + 1,params[i]);
         }
-        int updateRows = preparedStatement.executeUpdate();
-        return updateRows;
+        return preparedStatement.executeUpdate();
     }
 
     //释放资源
