@@ -36,7 +36,7 @@ public class UserDaoImpl implements UserDao {
                 user.setModifyBy(rs.getInt("modifyBy"));
                 user.setModifyDate(rs.getTimestamp("modifyDate"));
             }
-            BaseDao.closeResource(null, pstm, rs);
+            BaseDao.closeResources(null, pstm, rs);
             //connection不用关,连接可能存在业务
         }
         return user;

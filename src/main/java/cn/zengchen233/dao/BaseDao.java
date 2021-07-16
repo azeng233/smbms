@@ -17,9 +17,9 @@ public class BaseDao {
         Properties properties = new Properties();
         //通过类加载器读取对应的资源
         //云服务器
-        // InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("database.properties");
+        InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("database.properties");
         //本地服务器
-        InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("local.properties");
+        // InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("local.properties");
 
         try {
             properties.load(is);
@@ -54,8 +54,7 @@ public class BaseDao {
             //占位符从1开始，但是数组从0开始 可能有很多问号 问号从1开始
             preparedStatement.setObject(i + 1,params[i]);
         }
-        resultSet = preparedStatement.executeQuery();
-        return resultSet;
+        return preparedStatement.executeQuery();
     }
 
     //编写增删改公共方法
@@ -70,7 +69,7 @@ public class BaseDao {
     }
 
     //释放资源
-    public static boolean closeResource(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) throws SQLException {
+    public static boolean closeResources(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
         boolean flag = true;
         if(resultSet != null){
             try {
@@ -99,7 +98,7 @@ public class BaseDao {
                 flag = false;
             }
         }
-        return flag;
+        return true;
     }
 }
 

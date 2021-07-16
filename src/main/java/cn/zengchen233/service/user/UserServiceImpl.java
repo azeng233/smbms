@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User login(String userCode, String password) throws SQLException {
+    public User login(String userCode, String password) {
         Connection connection = null;
         User user = null;
 
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            BaseDao.closeResource(connection,null,null);
+            BaseDao.closeResources(connection,null,null);
         }
         return user;
     }
