@@ -9,5 +9,6 @@
         <module name="订单管理系统" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>

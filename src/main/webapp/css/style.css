@@ -72,7 +72,7 @@ input {
 
 .info {
     color: red;
-    font-weight:bold; 
+    font-weight:bold;
 }
 
 .inputbox input {
@@ -347,7 +347,7 @@ input[type='reset']:active, input[type='reset']:focus, .providerView a:hover, .p
     overflow: hidden;
 }
 .remove{
-   display: none;       /* 修改这里可以让删除框消失*/
+    display: none;       /* 修改这里可以让删除框消失*/
     width: 400px;
     height: 190px;
     position: absolute;
@@ -392,51 +392,51 @@ input[type='reset']:active, input[type='reset']:focus, .providerView a:hover, .p
 /*页码*/
 .page-bar
 {
-	position:relative;
-	margin-top:10px;
+    position:relative;
+    margin-top:10px;
 }
 .page-num-ul li
 {
-	float:left;
+    float:left;
 }
 .page-num-ul li a
 {
-	display:inline-block;
-	padding:3px 5px;
-	margin:0px 3px;
-	border:1px solid #b8b8b8;
+    display:inline-block;
+    padding:3px 5px;
+    margin:0px 3px;
+    border:1px solid #b8b8b8;
 }
 .page-num-ul a:hover,.page-num-ul .thisclass
 {
-	border:1px solid #c5063f;
-	background-color:#c5063f;
-	color:#FFF;
-	text-decoration:none;
+    border:1px solid #c5063f;
+    background-color:#c5063f;
+    color:#FFF;
+    text-decoration:none;
 }
 .page-key
 {
-	width:50px;
+    width:50px;
 }
 .page-btn
 {
-	border:1px solid #b8b8b8;
-	background-color:#fff3f8;
-	display:inline-block;
-	width:52px;
-	height:25px;
-	line-height:25px;
-	font-weight:20px;
+    border:1px solid #b8b8b8;
+    background-color:#fff3f8;
+    display:inline-block;
+    width:52px;
+    height:25px;
+    line-height:25px;
+    font-weight:20px;
 }
 .page-go-form
 {
-	position:absolute;
-	display:inline-block;
-	right:50px;
-	top:0px;
+    position:absolute;
+    display:inline-block;
+    right:50px;
+    top:0px;
 }
 .page-go-form input,label,button
 {
-	margin:0px 5px;
+    margin:0px 5px;
 }
 
 
