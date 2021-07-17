@@ -7,7 +7,6 @@ import cn.zengchen233.pojo.User;
 import org.junit.Test;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
 public class UserServiceImpl implements UserService {
 
@@ -36,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     // @Test
-    // public void test() throws SQLException {
+    // public void test() {
     //     UserServiceImpl userService = new UserServiceImpl();
     //     User admin = userService.login("admin", "1234567");
     //     System.out.println(admin.getUserPassword());

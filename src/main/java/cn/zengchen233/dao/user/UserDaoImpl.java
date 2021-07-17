@@ -20,6 +20,7 @@ public class UserDaoImpl implements UserDao {
             String sql = "select * from smbms_user where userCode=?";
             Object[] params = {userCode};
             rs = BaseDao.execute(connection, sql, params, rs, pstm);
+
             if (rs.next()) {
                 user = new User();
                 user.setId(rs.getInt("id"));

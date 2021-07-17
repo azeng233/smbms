@@ -36,10 +36,10 @@ public class BaseDao {
     public static Connection getConnection() {
         Connection connection = null;
         try {
-            System.out.println("数据库初始化中...");
+            // System.out.println("数据库初始化中...");
             Class.forName(driver);
             connection = DriverManager.getConnection(url, username, password);
-            System.out.println("数据库连接成功!");
+            // System.out.println("数据库连接成功!");
         } catch (Exception e) {
             e.printStackTrace();
         }
