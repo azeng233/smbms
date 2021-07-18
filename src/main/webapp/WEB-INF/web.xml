@@ -36,6 +36,15 @@
         <url-pattern>/jsp/logout.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>cn.zengchen233.servlet.user.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/jsp/user.do</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>SysFilter</filter-name>
         <filter-class>cn.zengchen233.filter.SysFilter</filter-class>
