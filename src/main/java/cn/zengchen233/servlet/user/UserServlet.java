@@ -24,7 +24,7 @@ public class UserServlet extends HttpServlet {
         if (method.equals("savepwd") && method != null) {
             this.updatePwd(req, resp);
         } else if (method.equals("pwdmodify") && method != null) {
-            this.pwdmodify(req, resp);
+            this.verifyPwd(req, resp);
         }
     }
 
@@ -62,7 +62,7 @@ public class UserServlet extends HttpServlet {
     }
 
     //验证旧密码,从Session中取得旧密码
-    public void pwdmodify(HttpServletRequest req, HttpServletResponse resp) {
+    public void verifyPwd(HttpServletRequest req, HttpServletResponse resp) {
         Object o = req.getSession().getAttribute(Constant.USER_SESSION);
         String oldpassword = req.getParameter("oldpassword");
 
