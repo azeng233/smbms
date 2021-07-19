@@ -44,7 +44,7 @@ public class UserServlet extends HttpServlet {
             UserService userService = new UserServiceImpl();
             flag = userService.updatePwd(((User) o).getUserCode(), newpassword);
             if (flag) {
-                req.setAttribute(Constant.MESSAGE, "密码修改成功,请退出并且是用新密码登录!");
+                req.setAttribute(Constant.MESSAGE, "密码修改成功,请退出并使用新密码登录!");
                 //密码修改成功，移除当前Session
                 req.getSession().removeAttribute(Constant.USER_SESSION);
                 //因为有SysFilter,只要发现没有这个Session就立马跳转到错误页面

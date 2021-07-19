@@ -19,7 +19,7 @@ public class UserDaoImpl implements UserDao {
         if (connection != null) {
             String sql = "select * from smbms_user where userCode=?";
             Object[] params = {userCode};
-            rs = BaseDao.execute(connection, sql, params, rs, pstm);
+            rs = BaseDao.execute(connection, pstm, sql, params, rs);
 
             if (rs.next()) {
                 user = new User();
@@ -51,7 +51,7 @@ public class UserDaoImpl implements UserDao {
         if (connection != null) {
             String sql = "update smbms_user set userPassword = ? where userCode = ?";
             Object[] params = {userPassword, userCode};
-            execute = BaseDao.execute(connection, sql, params, pstm);
+            execute = BaseDao.execute(connection, pstm, sql, params);
             BaseDao.closeResources(null, pstm, null);
         }
         return execute;

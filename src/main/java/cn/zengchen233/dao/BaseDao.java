@@ -47,7 +47,7 @@ public class BaseDao {
     }
 
     //编写查询公共类
-    public static ResultSet execute(Connection connection, String sql, Object[] params, ResultSet resultSet, PreparedStatement preparedStatement) throws SQLException {
+    public static ResultSet execute(Connection connection, PreparedStatement preparedStatement, String sql, Object[] params, ResultSet resultSet) throws SQLException {
         //用到了预编译，不需要传参,直接执行
         preparedStatement = connection.prepareStatement(sql);
         for (int i = 0; i < params.length; i++) {
@@ -58,7 +58,7 @@ public class BaseDao {
     }
 
     //编写增删改公共方法
-    public static int execute(Connection connection, String sql, Object[] params, PreparedStatement preparedStatement) throws SQLException {
+    public static int execute(Connection connection,  PreparedStatement preparedStatement, String sql, Object[] params) throws SQLException {
         //用到了预编译，不需要传参,直接执行
         preparedStatement = connection.prepareStatement(sql);
         for (int i = 0; i < params.length; i++) {
