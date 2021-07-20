@@ -86,10 +86,10 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
 
-    // @Test
-    // public void test() {
-    //     UserServiceImpl userService = new UserServiceImpl();
-    //     int userCount = userService.getUserCount("曾晨", 0);
-    //     System.out.println(userCount);
-    // }
+    @Test
+    public void test() {
+        UserServiceImpl userService = new UserServiceImpl();
+        int userCount = userService.getUserCount("曾晨", 0);
+        System.out.println(userCount);
+    }
 }

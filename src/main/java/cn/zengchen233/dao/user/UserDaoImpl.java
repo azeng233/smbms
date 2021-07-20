@@ -70,7 +70,8 @@ public class UserDaoImpl implements UserDao {
         if (connection != null) {
             StringBuffer sql = new StringBuffer();
             sql.append("select count(1) as count from smbms_user u,smbms_role r where u.userRole = r.id");
-            ArrayList<Object> list = new ArrayList<Object>();//存放我们的参数
+
+            List<Object> list = new ArrayList<Object>();
 
             if (!StringUtils.isNullOrEmpty(userName)) {
                 sql.append(" and u.userName like ?");
@@ -105,7 +106,7 @@ public class UserDaoImpl implements UserDao {
         if(connection != null){
             StringBuffer sql = new StringBuffer();
             sql.append("select u.*,r.roleName as userRoleName from smbms_user u,smbms_role r where u.userRole = r.id");
-            List<Object> list = new ArrayList<Object>();
+            ArrayList<Object> list = new ArrayList<Object>();
             if(!StringUtils.isNullOrEmpty(userName)){
                 sql.append(" and u.userName like ?");
                 list.add("%"+userName+"%");

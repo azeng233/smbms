@@ -23,11 +23,11 @@ public class RoleDaoImpl implements RoleDao {
             rs = BaseDao.execute(connection, pstm, sql, params, rs);
 
             while (rs.next()) {
-                Role role = new Role();
-                role.setId(rs.getInt("id"));
-                role.setRoleCode(rs.getString("roleCode"));
-                role.setRoleName(rs.getString("roleName"));
-                roleList.add(role);
+                Role _role = new Role();
+                _role.setId(rs.getInt("id"));
+                _role.setRoleCode(rs.getString("roleCode"));
+                _role.setRoleName(rs.getString("roleName"));
+                roleList.add(_role);
             }
             BaseDao.closeResources(null, pstm, rs);
         }

@@ -106,7 +106,7 @@ public class UserServlet extends HttpServlet {
         String queryUserName = req.getParameter("queryname");
         String temp = req.getParameter("queryUserRole");
         String pageIndex = req.getParameter("pageIndex");
-        int queryUserRole = 0;//默认值0
+        int queryUserRole = 0;
 
         //获取用户列表
         UserService userService = new UserServiceImpl();
@@ -116,11 +116,11 @@ public class UserServlet extends HttpServlet {
         int pageSize = Constant.pageSize;
         int currentPageNo = 1;
 
-        if (queryUserName == null) {
+        if (queryUserName == null){
             queryUserName = "";
         }
-        if (temp != null && !temp.equals("")) {
-            queryUserRole = Integer.parseInt(temp); //给查询赋值
+        if (temp != null && !temp.equals("")){
+            queryUserRole = Integer.parseInt(temp);//给查询赋值
         }
         if (pageIndex != null) {
             currentPageNo = Integer.parseInt(pageIndex);
