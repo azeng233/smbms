@@ -42,12 +42,6 @@
       <artifactId>standard</artifactId>
       <version>1.1.2</version>
     </dependency>
-      <dependency>
-          <groupId>org.jetbrains</groupId>
-          <artifactId>annotations-java5</artifactId>
-          <version>RELEASE</version>
-          <scope>compile</scope>
-      </dependency>
     <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
     <dependency>
       <groupId>com.alibaba</groupId>

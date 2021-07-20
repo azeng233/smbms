@@ -1,9 +1,13 @@
 package cn.zengchen233.servlet.user;
 
+import cn.zengchen233.pojo.Role;
 import cn.zengchen233.pojo.User;
+import cn.zengchen233.service.role.RoleService;
+import cn.zengchen233.service.role.RoleServiceImpl;
 import cn.zengchen233.service.user.UserService;
 import cn.zengchen233.service.user.UserServiceImpl;
 import cn.zengchen233.util.Constant;
+import cn.zengchen233.util.PageSupport;
 import com.alibaba.fastjson.JSONArray;
 import com.mysql.cj.util.StringUtils;
 
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //实现Servlet复用
@@ -25,6 +30,8 @@ public class UserServlet extends HttpServlet {
             this.updatePwd(req, resp);
         } else if (method.equals("pwdmodify") && method != null) {
             this.verifyPwd(req, resp);
+        } else if (method.equals("query") && method != null) {
+            this.query(req, resp);
         }
     }
 
@@ -90,5 +97,75 @@ public class UserServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    //重点和难点
+    public void query(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //查询用户列表
+        //从前端获取数据
+        String queryUserName = req.getParameter("queryname");
+        String temp = req.getParameter("queryUserRole");
+        String pageIndex = req.getParameter("pageIndex");
+        int queryUserRole = 0;//默认值0
+
+        //获取用户列表
+        UserService userService = new UserServiceImpl();
+
+        List<User> userList = null;
+        //第一次走这个请求一定是第一页，页面大小固定
+        int pageSize = Constant.pageSize;
+        int currentPageNo = 1;
+
+        if (queryUserName == null) {
+            queryUserName = "";
+        }
+        if (temp != null && !temp.equals("")) {
+            queryUserRole = Integer.parseInt(temp); //给查询赋值
+        }
+        if (pageIndex != null) {
+            currentPageNo = Integer.parseInt(pageIndex);
+        }
+        //获取用户总数
+        int totalCount = userService.getUserCount(queryUserName, queryUserRole);
+        //总页数支持
+        PageSupport pageSupport = new PageSupport();
+
+        pageSupport.setCurrentPageNo(currentPageNo);
+
+        pageSupport.setPageSize(pageSize);
+
+        pageSupport.setTotalCount(totalCount);
+
+        int totalPageCount = pageSupport.getTotalPageCount();
+
+        //控制首页和尾页
+        if (currentPageNo < 1) {
+            currentPageNo = 1;
+        } else if (currentPageNo > totalPageCount){
+            currentPageNo = totalPageCount;
+        }
+
+        //获取用户列表展示
+        userList = userService.getUserList(queryUserName, queryUserRole, currentPageNo, pageSize);
+        req.setAttribute("userList",userList);
+
+        RoleService roleService = new RoleServiceImpl();
+        List<Role> roleList = roleService.getRoleList();
+
+        req.setAttribute("roleList",roleList);
+        req.setAttribute("totalCount", totalCount);
+        req.setAttribute("currentPageNo", currentPageNo);
+        req.setAttribute("totalPageCount",totalPageCount);
+        req.setAttribute("queryUserName",queryUserName);
+        req.setAttribute("queryUserRole",queryUserRole);
+        //返回前端
+        try {
+            req.getRequestDispatcher("userlist.jsp").forward(req, resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

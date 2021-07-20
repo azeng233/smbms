@@ -7,6 +7,7 @@ import cn.zengchen233.pojo.User;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
@@ -52,10 +53,43 @@ public class UserServiceImpl implements UserService {
         return flag;
     }
 
+    @Override
+    public int getUserCount(String userName, int userRole) {
+        Connection connection = null;
+        int count = 0;
+        try {
+            connection = BaseDao.getConnection();
+            count = userDao.getUserCount(connection, userName, userRole);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            BaseDao.closeResources(connection, null, null);
+        }
+        return count;
+
+    }
+
+    //获取用户列表
+    @Override
+    public List<User> getUserList(String queryUserName, int queryUserRole, int currentPageNo, int pageSize) {
+        Connection connection = null;
+        List<User> userList = null;
+
+        try {
+            connection = BaseDao.getConnection();
+            userList = userDao.getUserList(connection, queryUserName,queryUserRole,currentPageNo,pageSize);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            BaseDao.closeResources(connection, null, null);
+        }
+        return userList;
+    }
+
     // @Test
     // public void test() {
     //     UserServiceImpl userService = new UserServiceImpl();
-    //     User admin = userService.login("admin", "1234567");
-    //     System.out.println(admin.getUserPassword());
+    //     int userCount = userService.getUserCount("曾晨", 0);
+    //     System.out.println(userCount);
     // }
 }
