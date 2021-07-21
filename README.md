@@ -1,3 +1,5 @@
+
+
 # 超市订单管理系统 -- 狂神说java
 
 ## 环境
@@ -20,28 +22,29 @@
 
 ## 项目截图
 
-![image-20210721131926582](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210721131926582.png)
+![](https://cdn.jsdelivr.net/gh/azeng233/Image-Bed@master/img/20210721131926582.png)
 
 <p align="center">登陆界面</p>
 
-![image-20210721132335171](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210721132335171.png)
+![image-20210721132356829](https://cdn.jsdelivr.net/gh/azeng233/Image-Bed@master/img/20210721132335171.png)
 
 <p align="center">首页</p>
 
-![image-20210721132356829](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210721132356829.png)
+![](https://cdn.jsdelivr.net/gh/azeng233/Image-Bed@master/img/20210721132356829.png)
 
 <p align="center">订单管理页面</p>
 
-![image-20210721132415023](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210721132415023.png)
+![image-20210721132415023](https://cdn.jsdelivr.net/gh/azeng233/Image-Bed@master/img/20210721132415023.png)
 
 <p align="center">供应商管理页面</p>
 
-![image-20210721132443965](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210721132443965.png)
+![](https://cdn.jsdelivr.net/gh/azeng233/Image-Bed@master/img/20210721132443965.png)
 
 <p align="center">用户管理页面</p>
 
-![image-20210721132500896](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210721132500896.png)
+![](https://cdn.jsdelivr.net/gh/azeng233/Image-Bed@master/img/20210721132500896.png)
 
 <p align="center">密码修改页面</p>
 
 Tips：喜欢可以点击小心心哦！有需要改进的地方可以pr我们一起商讨！
+
