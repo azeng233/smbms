@@ -18,7 +18,7 @@
             <p><strong>出生日期：</strong><span>${user.birthday }</span></p>
             <p><strong>用户电话：</strong><span>${user.phone }</span></p>
             <p><strong>用户地址：</strong><span>${user.address }</span></p>
-            <p><strong>用户角色：</strong><span>${user.userRoleName}</span></p>
+            <p><strong>用户角色：</strong><span>${user.userRole}</span></p>
 			<div class="providerAddBtn">
             	<input type="button" id="back" name="back" value="返回" >
             </div>

@@ -140,4 +140,81 @@ public class UserDaoImpl implements UserDao {
         return userList;
     }
 
+    @Override
+    public int add(Connection connection, User user) throws Exception {
+        PreparedStatement pstm = null;
+        int updateRows = 0;
+        if(connection != null){
+            String sql = "insert into smbms_user (userCode,userName,userPassword,userRole," +
+                         "gender,birthday,phone,address,creationDate,createdBy)" +
+                         "values(?,?,?,?,?,?,?,?,?,?)";
+            Object[] params = {user.getUserCode(),user.getUserName(),user.getUserPassword(),
+                    user.getUserRole(),user.getGender(),user.getBirthday(),
+                    user.getPhone(),user.getAddress(),user.getCreationDate(),user.getCreatedBy()};
+            updateRows = BaseDao.execute(connection, pstm, sql, params);
+            BaseDao.closeResources(null, pstm, null);
+        }
+        return updateRows;
+    }
+
+    @Override
+    public int deleteUserById(Connection connection, Integer delId) throws Exception {
+        PreparedStatement pstm = null;
+        int flag = 0;
+        if(null != connection){
+            String sql = "delete from smbms_user where id = ?";
+            Object[] params = {delId};
+            flag = BaseDao.execute(connection, pstm, sql, params);
+            BaseDao.closeResources(null, pstm, null);
+        }
+        return flag;
+    }
+
+    @Override
+    public int modify(Connection connection, User user) throws Exception {
+        int flag = 0;
+        PreparedStatement pstm = null;
+        if(null != connection){
+            String sql = "update smbms_user set userName=?,"+
+                    "gender=?,birthday=?,phone=?,address=?,userRole=?,modifyBy=?,modifyDate=? where id = ? ";
+            Object[] params = {user.getUserName(),user.getGender(),user.getBirthday(),
+                    user.getPhone(),user.getAddress(),user.getUserRole(),user.getModifyBy(),
+                    user.getModifyDate(),user.getId()};
+            flag = BaseDao.execute(connection, pstm, sql, params);
+            BaseDao.closeResources(null, pstm, null);
+        }
+        return flag;
+    }
+
+    @Override
+    public User getUserById(Connection connection, String id) throws Exception {
+        User user = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        if(null != connection){
+            String sql = "select u.*,r.roleName as userRoleName from smbms_user u,smbms_role r where u.id=? and u.userRole = r.id";
+            Object[] params = {id};
+            rs = BaseDao.execute(connection, pstm, sql, params, rs);
+            if(rs.next()){
+                user = new User();
+                user.setId(rs.getInt("id"));
+                user.setUserCode(rs.getString("userCode"));
+                user.setUserName(rs.getString("userName"));
+                user.setUserPassword(rs.getString("userPassword"));
+                user.setGender(rs.getInt("gender"));
+                user.setBirthday(rs.getDate("birthday"));
+                user.setPhone(rs.getString("phone"));
+                user.setAddress(rs.getString("address"));
+                user.setUserRole(rs.getInt("userRole"));
+                user.setCreatedBy(rs.getInt("createdBy"));
+                user.setCreationDate(rs.getTimestamp("creationDate"));
+                user.setModifyBy(rs.getInt("modifyBy"));
+                user.setModifyDate(rs.getTimestamp("modifyDate"));
+                user.setUserRoleName(rs.getString("userRoleName"));
+            }
+            BaseDao.closeResources(null, pstm, rs);
+        }
+        return user;
+    }
+
 }

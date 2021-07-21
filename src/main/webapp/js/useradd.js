@@ -96,9 +96,9 @@ $(function(){
 	});
 	
 	userPassword.bind("focus",function(){
-		validateTip(userPassword.next(),{"color":"#666666"},"* 密码长度必须是大于6小于20",false);
+		validateTip(userPassword.next(),{"color":"#666666"},"* 密码长度必须是大于0小于20",false);
 	}).bind("blur",function(){
-		if(userPassword.val() != null && userPassword.val().length > 6
+		if(userPassword.val() != null && userPassword.val().length > 0
 				&& userPassword.val().length < 20 ){
 			validateTip(userPassword.next(),{"color":"green"},imgYes,true);
 		}else{
@@ -107,9 +107,9 @@ $(function(){
 	});
 	
 	ruserPassword.bind("focus",function(){
-		validateTip(ruserPassword.next(),{"color":"#666666"},"* 请输入与上面一只的密码",false);
+		validateTip(ruserPassword.next(),{"color":"#666666"},"* 请输入与上面一致的密码",false);
 	}).bind("blur",function(){
-		if(ruserPassword.val() != null && ruserPassword.val().length > 6
+		if(ruserPassword.val() != null && ruserPassword.val().length > 0
 				&& ruserPassword.val().length < 20 && userPassword.val() == ruserPassword.val()){
 			validateTip(ruserPassword.next(),{"color":"green"},imgYes,true);
 		}else{
@@ -148,18 +148,19 @@ $(function(){
 			validateTip(userRole.next(),{"color":"red"},imgNo + " 请重新选择用户角色",false);
 		}
 	});
-	
+
+
 	addBtn.bind("click",function(){
 		if(userCode.attr("validateStatus") != "true"){
 			userCode.blur();
 		}else if(userName.attr("validateStatus") != "true"){
 			userName.blur();
+		}else if(birthday.attr("validateStatus") != "true"){
+			birthday.blur();
 		}else if(userPassword.attr("validateStatus") != "true"){
 			userPassword.blur();
 		}else if(ruserPassword.attr("validateStatus") != "true"){
 			ruserPassword.blur();
-		}else if(birthday.attr("validateStatus") != "true"){
-			birthday.blur();
 		}else if(phone.attr("validateStatus") != "true"){
 			phone.blur();
 		}else if(userRole.attr("validateStatus") != "true"){

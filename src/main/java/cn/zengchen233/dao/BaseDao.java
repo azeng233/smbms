@@ -17,9 +17,9 @@ public class BaseDao {
         Properties properties = new Properties();
         //通过类加载器读取对应的资源
         //云服务器
-        InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("database.properties");
+        // InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("database.properties");
         //本地服务器
-        // InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("local.properties");
+        InputStream is = BaseDao.class.getClassLoader().getResourceAsStream("local.properties");
 
         try {
             properties.load(is);
